@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kreate Asset Hub</title>
     <style>
-    
+        /* ১. Solid Dark Background (আপনার অ্যাপের নেটিভ ডার্ক ফিল) */
         body { 
-            background-color: #0F1115;
-            color: #FFFFFF; 
+            background-color: #0F1115; 
+            color: white; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
             padding: 20px; 
             text-align: center; 
         }
         
-        /* Section Titles */
+        /* Section Titles with Blue Border */
         h2 { 
             color: #E0E0E0; 
             font-size: 18px; 
@@ -24,7 +24,7 @@
             font-weight: 600; 
             text-align: left; 
             padding-left: 12px; 
-            border-left: 4px solid #4CAF50; 
+            border-left: 4px solid #3b82f6; /* 🔥 Updated to Kreate Blue */
         }
         
         /* 1. Web Resources Grid */
@@ -67,8 +67,9 @@
             box-sizing: border-box;
             outline: none;
             backdrop-filter: blur(5px);
+            transition: 0.3s;
         }
-        .search-box:focus { border-color: #4CAF50; }
+        .search-box:focus { border-color: #3b82f6; } /* 🔥 Updated to Kreate Blue */
         .search-box::placeholder { color: #888; }
 
         /* 3. Tabs */
@@ -96,9 +97,9 @@
             transition: 0.2s;
         }
         .tab-btn.active {
-            background: #4CAF50;
+            background: #3b82f6; /* 🔥 Updated to Kreate Blue */
             color: white;
-            border-color: #4CAF50;
+            border-color: #3b82f6; /* 🔥 Updated to Kreate Blue */
         }
 
         /* 4. Asset Grid */
@@ -120,12 +121,12 @@
             border: 1px solid #333; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
+        /* Pointer Events মুছে ফেলা হয়েছে যাতে লং-প্রেস কাজ করে */
         .asset-card img, .asset-card svg { 
             max-width: 100%; 
             height: auto; 
             max-height: 60px; 
             object-fit: contain; 
-            pointer-events: none; /* Long press detect করার জন্য */
         }
         
         /* 5. Loading & Empty State (Premium Look) */
@@ -138,7 +139,7 @@
         }
         
         .empty-state {
-            grid-column: 1 / -1; /* পুরো গ্রিড জুড়ে থাকবে */
+            grid-column: 1 / -1; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -223,7 +224,6 @@
             fetch(apiUrl)
                 .then(res => {
                     if (!res.ok) {
-                        // যদি ফোল্ডার না থাকে (404 Error)
                         throw new Error("Folder is empty or does not exist.");
                     }
                     return res.json();
@@ -236,7 +236,6 @@
                 })
                 .catch(err => {
                     document.getElementById('loading').style.display = 'none';
-                    // ফোল্ডার না থাকলে বা API এরর দিলে Empty State দেখাবে
                     renderEmptyState("📁", "Folder is Empty", "Upload supported files to GitHub to see them here.");
                 });
         }
@@ -245,7 +244,6 @@
             const grid = document.getElementById('assetGrid');
             grid.innerHTML = '';
             
-            // যদি সার্চ করে কিছু না পায় বা ফোল্ডারে ফাইল না থাকে
             if(files.length === 0) {
                 const isSearching = document.getElementById('searchInput').value.length > 0;
                 if(isSearching) {
@@ -269,7 +267,6 @@
             });
         }
 
-        // Empty State রেন্ডার করার জন্য আলাদা ফাংশন
         function renderEmptyState(icon, title, desc) {
             const grid = document.getElementById('assetGrid');
             grid.innerHTML = `
@@ -288,7 +285,6 @@
             renderGrid(filteredFiles);
         });
 
-        // ইনিশিয়ালাইজেশন
         initTabs();
     </script>
 
