@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kreate Asset Hub</title>
     <style>
+        /* Transparent Background for App Native Feel */
         body { 
-            background-color: #121212; 
+            background-color: transparent; 
             color: white; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
@@ -14,7 +15,7 @@
             text-align: center; 
         }
         
-        /* সুন্দর সেকশন টাইটেল */
+        /* Section Titles */
         h2 { 
             color: #E0E0E0; 
             font-size: 18px; 
@@ -23,10 +24,10 @@
             font-weight: 600; 
             text-align: left; 
             padding-left: 12px; 
-            border-left: 4px solid #4CAF50; /* নামের পাশে সুন্দর একটি সবুজ বর্ডার */
+            border-left: 4px solid #4CAF50; 
         }
         
-        /* ১. ওয়েবসাইটের লিংকগুলোর ডিজাইন */
+        /* 1. Web Resources Grid */
         .link-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -35,7 +36,7 @@
             margin: 0 auto 30px auto; 
         }
         .link-card { 
-            background: #1E1E1E; 
+            background: rgba(30, 30, 30, 0.8); 
             padding: 15px 12px; 
             border-radius: 12px; 
             text-decoration: none; 
@@ -45,39 +46,112 @@
             text-align: left; 
             border: 1px solid #333; 
             transition: 0.2s; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
         }
         .link-card:active { background: #333; transform: scale(0.96); }
         .link-icon { font-size: 26px; margin-right: 12px; }
         .link-title { font-size: 14px; font-weight: bold; margin-bottom: 2px; }
         .link-desc { font-size: 11px; color: #888; }
 
-        /* ২. আপনার নিজস্ব শেপের গ্যালারি ডিজাইন */
+        /* 2. Search Box */
+        .search-box {
+            width: 100%;
+            max-width: 800px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background: rgba(26, 26, 26, 0.8);
+            color: white;
+            font-size: 14px;
+            margin: 0 auto 15px auto;
+            display: block;
+            box-sizing: border-box;
+            outline: none;
+            backdrop-filter: blur(5px);
+        }
+        .search-box:focus { border-color: #4CAF50; }
+        .search-box::placeholder { color: #888; }
+
+        /* 3. Tabs */
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            max-width: 800px;
+            margin: 0 auto 15px auto;
+            padding-bottom: 5px;
+            scrollbar-width: none;
+        }
+        .tabs-container::-webkit-scrollbar { display: none; } 
+        
+        .tab-btn {
+            padding: 8px 16px;
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            border: 1px solid #333;
+            color: #AAA;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        /* 4. Asset Grid */
         .asset-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); 
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); 
             gap: 12px; 
             max-width: 800px; 
             margin: 0 auto; 
             padding-bottom: 40px; 
         }
         .asset-card { 
-            background: #1A1A1A; 
+            background: rgba(26, 26, 26, 0.8); 
             padding: 15px; 
             border-radius: 12px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            border: 1px solid #2A2A2A; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
+            border: 1px solid #333; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
         .asset-card img, .asset-card svg { 
             max-width: 100%; 
             height: auto; 
-            max-height: 70px; 
+            max-height: 60px; 
             object-fit: contain; 
+            pointer-events: none; /* Long press detect করার জন্য */
         }
-        .loading { color: #888; font-size: 14px; margin-top: 10px; text-align: left; padding-left: 12px; }
+        
+        /* 5. Loading & Empty State (Premium Look) */
+        .status-message { 
+            color: #888; 
+            font-size: 14px; 
+            text-align: left; 
+            padding-left: 12px; 
+            margin-bottom: 20px;
+        }
+        
+        .empty-state {
+            grid-column: 1 / -1; /* পুরো গ্রিড জুড়ে থাকবে */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px dashed #444;
+            margin-top: 10px;
+        }
+        .empty-icon { font-size: 48px; margin-bottom: 15px; opacity: 0.8; }
+        .empty-title { font-size: 16px; font-weight: bold; color: #DDD; margin-bottom: 5px; }
+        .empty-desc { font-size: 12px; color: #888; }
     </style>
 </head>
 <body>
@@ -86,73 +160,136 @@
     <div class="link-grid">
         <a class="link-card" href="https://www.svgrepo.com">
             <div class="link-icon">🚀</div>
-            <div>
-                <div class="link-title">SVG Repo</div>
-                <div class="link-desc">Free Vector Icons</div>
-            </div>
+            <div><div class="link-title">SVG Repo</div><div class="link-desc">Free Vector Icons</div></div>
         </a>
         <a class="link-card" href="https://unsplash.com">
             <div class="link-icon">📷</div>
-            <div>
-                <div class="link-title">Unsplash</div>
-                <div class="link-desc">HD Photos</div>
-            </div>
+            <div><div class="link-title">Unsplash</div><div class="link-desc">HD Photos</div></div>
         </a>
         <a class="link-card" href="https://www.freepik.com">
             <div class="link-icon">✨</div>
-            <div>
-                <div class="link-title">Freepik</div>
-                <div class="link-desc">Vectors & PSD</div>
-            </div>
+            <div><div class="link-title">Freepik</div><div class="link-desc">Vectors & PSD</div></div>
         </a>
         <a class="link-card" href="https://pixabay.com">
             <div class="link-icon">🎨</div>
-            <div>
-                <div class="link-title">Pixabay</div>
-                <div class="link-desc">Images & Art</div>
-            </div>
+            <div><div class="link-title">Pixabay</div><div class="link-desc">Images & Art</div></div>
         </a>
     </div>
 
     <h2>Kreate Cloud Library</h2>
-    <div id="loading" class="loading">Loading exclusive assets from server...</div>
+    
+    <input type="text" id="searchInput" class="search-box" placeholder="Search shapes, emojis...">
+    <div class="tabs-container" id="tabContainer"></div>
+    <div id="loading" class="status-message">Connecting to Cloud...</div>
     <div class="asset-grid" id="assetGrid"></div>
 
     <script>
-        // 🔥 নিচে আপনার গিটহাবের তথ্যগুলো বসিয়ে দিন 🔥
+        // 🔥 আপনার গিটহাবের ইউজারনেম ও রিপোজিটরির নাম দিন 🔥
         const GITHUB_USER = "khor7d"; 
         const REPO_NAME = "kreate-asset-hub";
-        const FOLDER_NAME = "shapes"; 
+        
+        // 🔥 আপনার গিটহাবের ফোল্ডারগুলোর নাম এখানে দিন 🔥
+        const FOLDERS = ["shapes", "emojis", "badges", "icons"]; 
 
-        const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${FOLDER_NAME}`;
+        let currentFiles = []; 
 
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) throw new Error("Folder not found or empty.");
-                return response.json();
-            })
-            .then(data => {
-                const grid = document.getElementById('assetGrid');
-                document.getElementById('loading').style.display = 'none';
-
-                data.forEach(file => {
-                    // ছবি বা SVG হলে কার্ড তৈরি করবে
-                    if (file.name.endsWith('.svg') || file.name.endsWith('.png') || file.name.endsWith('.jpg')) {
-                        const card = document.createElement('div');
-                        card.className = 'asset-card';
-                        
-                        const img = document.createElement('img');
-                        img.src = file.download_url; // গিটহাবের ডিরেক্ট লিংক
-                        img.alt = file.name;
-                        
-                        card.appendChild(img);
-                        grid.appendChild(card);
-                    }
-                });
-            })
-            .catch(error => {
-                document.getElementById('loading').innerText = "Failed to load: " + error.message;
+        function initTabs() {
+            const tabContainer = document.getElementById('tabContainer');
+            FOLDERS.forEach((folder, index) => {
+                const btn = document.createElement('div');
+                btn.className = 'tab-btn' + (index === 0 ? ' active' : '');
+                btn.innerText = folder.charAt(0).toUpperCase() + folder.slice(1);
+                
+                btn.onclick = () => {
+                    document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById('searchInput').value = "";
+                    loadFolder(folder);
+                };
+                tabContainer.appendChild(btn);
             });
+            
+            if(FOLDERS.length > 0) loadFolder(FOLDERS[0]);
+        }
+
+        function loadFolder(folderName) {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('loading').innerText = `Loading ${folderName}...`;
+            document.getElementById('assetGrid').innerHTML = '';
+            currentFiles = [];
+
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${folderName}`;
+
+            fetch(apiUrl)
+                .then(res => {
+                    if (!res.ok) {
+                        // যদি ফোল্ডার না থাকে (404 Error)
+                        throw new Error("Folder is empty or does not exist.");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    document.getElementById('loading').style.display = 'none';
+                    // শুধুমাত্র ছবি এবং SVG ফিল্টার করা
+                    currentFiles = data.filter(file => file.name.match(/\.(svg|png|jpg)$/i));
+                    renderGrid(currentFiles);
+                })
+                .catch(err => {
+                    document.getElementById('loading').style.display = 'none';
+                    // ফোল্ডার না থাকলে বা API এরর দিলে Empty State দেখাবে
+                    renderEmptyState("📁", "Folder is Empty", "Upload supported files to GitHub to see them here.");
+                });
+        }
+
+        function renderGrid(files) {
+            const grid = document.getElementById('assetGrid');
+            grid.innerHTML = '';
+            
+            // যদি সার্চ করে কিছু না পায় বা ফোল্ডারে ফাইল না থাকে
+            if(files.length === 0) {
+                const isSearching = document.getElementById('searchInput').value.length > 0;
+                if(isSearching) {
+                    renderEmptyState("🔍", "No Matches Found", "Try searching with a different keyword.");
+                } else {
+                    renderEmptyState("📁", "No Assets Found", "This folder currently has no supported files.");
+                }
+                return;
+            }
+            
+            files.forEach(file => {
+                const card = document.createElement('div');
+                card.className = 'asset-card';
+                
+                const img = document.createElement('img');
+                img.src = file.download_url;
+                img.alt = file.name;
+                
+                card.appendChild(img);
+                grid.appendChild(card);
+            });
+        }
+
+        // Empty State রেন্ডার করার জন্য আলাদা ফাংশন
+        function renderEmptyState(icon, title, desc) {
+            const grid = document.getElementById('assetGrid');
+            grid.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon">${icon}</div>
+                    <div class="empty-title">${title}</div>
+                    <div class="empty-desc">${desc}</div>
+                </div>
+            `;
+        }
+
+        // রিয়েল-টাইম সার্চ
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filteredFiles = currentFiles.filter(file => file.name.toLowerCase().includes(query));
+            renderGrid(filteredFiles);
+        });
+
+        // ইনিশিয়ালাইজেশন
+        initTabs();
     </script>
 
 </body>
