@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kreate Asset Hub</title>
+    <style>
+        body { 
+            background-color: #121212; 
+            color: white; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        h2 { 
+            color: #A0A0A0; 
+            font-size: 22px; 
+            margin-top: 10px; 
+            margin-bottom: 25px; 
+            font-weight: 600;
+        }
+        .grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 16px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding-bottom: 40px;
+        }
+        .card { 
+            background: #1E1E1E; 
+            padding: 25px 15px; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            color: white; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px solid #333; 
+            transition: 0.2s; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
+        }
+        .card:active { 
+            background: #333; 
+            transform: scale(0.96); 
+        }
+        .icon { 
+            font-size: 32px; 
+            margin-bottom: 12px; 
+        }
+        .title { 
+            font-size: 15px; 
+            font-weight: bold; 
+            margin-bottom: 4px; 
+        }
+        .desc { 
+            font-size: 11px; 
+            color: #888; 
+        }
+    </style>
+</head>
+<body>
+    <h2>Kreate Asset Hub</h2>
+    
+    <div class="grid">
+        <a class="card" href="https://www.svgrepo.com">
+            <div class="icon">🚀</div>
+            <div class="title">SVG Repo</div>
+            <div class="desc">Free Vector Icons</div>
+        </a>
+        
+        <a class="card" href="https://unsplash.com">
+            <div class="icon">📷</div>
+            <div class="title">Unsplash</div>
+            <div class="desc">HD Photos</div>
+        </a>
+        
+        <a class="card" href="https://www.freepik.com">
+            <div class="icon">✨</div>
+            <div class="title">Freepik</div>
+            <div class="desc">Vectors & PSD</div>
+        </a>
+        
+        <a class="card" href="https://pixabay.com">
+            <div class="icon">🎨</div>
+            <div class="title">Pixabay</div>
+            <div class="desc">Images & Illustrations</div>
+        </a>
+        
+        <a class="card" href="https://www.flaticon.com">
+            <div class="icon">💎</div>
+            <div class="title">Flaticon</div>
+            <div class="desc">Stickers & Icons</div>
+        </a>
+        
+        <a class="card" href="https://www.google.com/imghp">
+            <div class="icon">🔍</div>
+            <div class="title">Google Images</div>
+            <div class="desc">Web Search</div>
+        </a>
+    </div>
+</body>
+</html>
