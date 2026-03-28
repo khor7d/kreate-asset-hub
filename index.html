@@ -13,93 +13,147 @@
             padding: 20px; 
             text-align: center; 
         }
+        
+        /* সুন্দর সেকশন টাইটেল */
         h2 { 
-            color: #A0A0A0; 
-            font-size: 22px; 
-            margin-top: 10px; 
-            margin-bottom: 25px; 
-            font-weight: 600;
+            color: #E0E0E0; 
+            font-size: 18px; 
+            margin-top: 15px; 
+            margin-bottom: 15px; 
+            font-weight: 600; 
+            text-align: left; 
+            padding-left: 12px; 
+            border-left: 4px solid #4CAF50; /* নামের পাশে সুন্দর একটি সবুজ বর্ডার */
         }
-        .grid { 
+        
+        /* ১. ওয়েবসাইটের লিংকগুলোর ডিজাইন */
+        .link-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 16px; 
-            max-width: 600px; 
-            margin: 0 auto; 
-            padding-bottom: 40px;
+            gap: 12px; 
+            max-width: 800px; 
+            margin: 0 auto 30px auto; 
         }
-        .card { 
+        .link-card { 
             background: #1E1E1E; 
-            padding: 25px 15px; 
-            border-radius: 16px; 
+            padding: 15px 12px; 
+            border-radius: 12px; 
             text-decoration: none; 
             color: white; 
             display: flex; 
-            flex-direction: column; 
             align-items: center; 
-            justify-content: center; 
+            text-align: left; 
             border: 1px solid #333; 
             transition: 0.2s; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
         }
-        .card:active { 
-            background: #333; 
-            transform: scale(0.96); 
+        .link-card:active { background: #333; transform: scale(0.96); }
+        .link-icon { font-size: 26px; margin-right: 12px; }
+        .link-title { font-size: 14px; font-weight: bold; margin-bottom: 2px; }
+        .link-desc { font-size: 11px; color: #888; }
+
+        /* ২. আপনার নিজস্ব শেপের গ্যালারি ডিজাইন */
+        .asset-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); 
+            gap: 12px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding-bottom: 40px; 
         }
-        .icon { 
-            font-size: 32px; 
-            margin-bottom: 12px; 
+        .asset-card { 
+            background: #1A1A1A; 
+            padding: 15px; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px solid #2A2A2A; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
         }
-        .title { 
-            font-size: 15px; 
-            font-weight: bold; 
-            margin-bottom: 4px; 
+        .asset-card img, .asset-card svg { 
+            max-width: 100%; 
+            height: auto; 
+            max-height: 70px; 
+            object-fit: contain; 
         }
-        .desc { 
-            font-size: 11px; 
-            color: #888; 
-        }
+        .loading { color: #888; font-size: 14px; margin-top: 10px; text-align: left; padding-left: 12px; }
     </style>
 </head>
 <body>
-    <h2>Kreate Asset Hub</h2>
-    
-    <div class="grid">
-        <a class="card" href="https://www.svgrepo.com">
-            <div class="icon">🚀</div>
-            <div class="title">SVG Repo</div>
-            <div class="desc">Free Vector Icons</div>
+
+    <h2>Web Resources</h2>
+    <div class="link-grid">
+        <a class="link-card" href="https://www.svgrepo.com">
+            <div class="link-icon">🚀</div>
+            <div>
+                <div class="link-title">SVG Repo</div>
+                <div class="link-desc">Free Vector Icons</div>
+            </div>
         </a>
-        
-        <a class="card" href="https://unsplash.com">
-            <div class="icon">📷</div>
-            <div class="title">Unsplash</div>
-            <div class="desc">HD Photos</div>
+        <a class="link-card" href="https://unsplash.com">
+            <div class="link-icon">📷</div>
+            <div>
+                <div class="link-title">Unsplash</div>
+                <div class="link-desc">HD Photos</div>
+            </div>
         </a>
-        
-        <a class="card" href="https://www.freepik.com">
-            <div class="icon">✨</div>
-            <div class="title">Freepik</div>
-            <div class="desc">Vectors & PSD</div>
+        <a class="link-card" href="https://www.freepik.com">
+            <div class="link-icon">✨</div>
+            <div>
+                <div class="link-title">Freepik</div>
+                <div class="link-desc">Vectors & PSD</div>
+            </div>
         </a>
-        
-        <a class="card" href="https://pixabay.com">
-            <div class="icon">🎨</div>
-            <div class="title">Pixabay</div>
-            <div class="desc">Images & Illustrations</div>
-        </a>
-        
-        <a class="card" href="https://www.flaticon.com">
-            <div class="icon">💎</div>
-            <div class="title">Flaticon</div>
-            <div class="desc">Stickers & Icons</div>
-        </a>
-        
-        <a class="card" href="https://www.google.com/imghp">
-            <div class="icon">🔍</div>
-            <div class="title">Google Images</div>
-            <div class="desc">Web Search</div>
+        <a class="link-card" href="https://pixabay.com">
+            <div class="link-icon">🎨</div>
+            <div>
+                <div class="link-title">Pixabay</div>
+                <div class="link-desc">Images & Art</div>
+            </div>
         </a>
     </div>
+
+    <h2>Kreate Cloud Library</h2>
+    <div id="loading" class="loading">Loading exclusive assets from server...</div>
+    <div class="asset-grid" id="assetGrid"></div>
+
+    <script>
+        // 🔥 নিচে আপনার গিটহাবের তথ্যগুলো বসিয়ে দিন 🔥
+        const GITHUB_USER = "khor7d"; 
+        const REPO_NAME = "kreate-asset-hub";
+        const FOLDER_NAME = "shapes"; 
+
+        const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${FOLDER_NAME}`;
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) throw new Error("Folder not found or empty.");
+                return response.json();
+            })
+            .then(data => {
+                const grid = document.getElementById('assetGrid');
+                document.getElementById('loading').style.display = 'none';
+
+                data.forEach(file => {
+                    // ছবি বা SVG হলে কার্ড তৈরি করবে
+                    if (file.name.endsWith('.svg') || file.name.endsWith('.png') || file.name.endsWith('.jpg')) {
+                        const card = document.createElement('div');
+                        card.className = 'asset-card';
+                        
+                        const img = document.createElement('img');
+                        img.src = file.download_url; // গিটহাবের ডিরেক্ট লিংক
+                        img.alt = file.name;
+                        
+                        card.appendChild(img);
+                        grid.appendChild(card);
+                    }
+                });
+            })
+            .catch(error => {
+                document.getElementById('loading').innerText = "Failed to load: " + error.message;
+            });
+    </script>
+
 </body>
 </html>
