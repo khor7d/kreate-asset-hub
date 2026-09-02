@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "resources": [
+    {
+      "id": "svgrepo",
+      "title": "SVG Repo",
+      "desc": "Free Vector Icons",
+      "url": "https://www.svgrepo.com",
+      "icon": "rocket"
+    },
+    {
+      "id": "unsplash",
+      "title": "Unsplash",
+      "desc": "HD Photos",
+      "url": "https://unsplash.com",
+      "icon": "camera"
+    },
+    {
+      "id": "freepik",
+      "title": "Freepik",
+      "desc": "Vectors & PSD",
+      "url": "https://www.freepik.com",
+      "icon": "sparkle"
+    },
+    {
+      "id": "pixabay",
+      "title": "Pixabay",
+      "desc": "Images & Art",
+      "url": "https://pixabay.com",
+      "icon": "palette"
+    },
+    {
+      "id": "gemini",
+      "title": "Gemini",
+      "desc": "AI Assistant",
+      "url": "https://gemini.google.com",
+      "icon": "gemini"
+    },
+    {
+      "id": "removebg",
+      "title": "Remove.bg",
+      "desc": "Background Remover",
+      "url": "https://www.remove.bg/",
+      "icon": "layers"
+    }
+  ]
+}
