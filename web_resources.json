@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "resources": [
     {
       "id": "svgrepo",
@@ -13,35 +13,35 @@
       "title": "Unsplash",
       "desc": "HD Photos",
       "url": "https://unsplash.com",
-      "icon": "camera"
+      "icon": "favicon"
     },
     {
       "id": "freepik",
       "title": "Freepik",
       "desc": "Vectors & PSD",
       "url": "https://www.freepik.com",
-      "icon": "sparkle"
+      "icon": "favicon"
     },
     {
       "id": "pixabay",
       "title": "Pixabay",
       "desc": "Images & Art",
       "url": "https://pixabay.com",
-      "icon": "palette"
+      "icon": "favicon"
     },
     {
       "id": "gemini",
-      "title": "Gemini",
+      "title": "Google Gemini",
       "desc": "AI Assistant",
       "url": "https://gemini.google.com",
-      "icon": "gemini"
+      "icon": "favicon"
     },
     {
       "id": "removebg",
       "title": "Remove",
       "desc": "Background Remover",
       "url": "https://www.jukeboxprint.com/tools/remove-background",
-      "icon": "layers"
+      "icon": "favicon"
     }
   ]
 }
