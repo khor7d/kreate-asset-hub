@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "resources": [
     {
       "id": "svgrepo",
@@ -38,9 +38,9 @@
     },
     {
       "id": "removebg",
-      "title": "Remove.bg",
+      "title": "Remove",
       "desc": "Background Remover",
-      "url": "https://www.remove.bg/",
+      "url": "https://www.jukeboxprint.com/tools/remove-background",
       "icon": "layers"
     }
   ]
